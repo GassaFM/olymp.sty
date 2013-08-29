@@ -1,0 +1,13 @@
+Author: Ivan Kazmenko
+Idea: Ivan Kazmenko
+Inspiration: такая же задача-шутка на прямой для двоих (чётность длин отрезков)
+Origin: 20121014, XXXIII SPbSU Championship
+Original Name: covering-game
+Descriptions: TEX
+I/O: PROBLEMNAME.{in|out}
+ID: 0126
+
+Стиль легенды: математическая
+Легенда: нет
+Условие: пояснения к примерам
+Генератор: C++, gentools 0.7.245

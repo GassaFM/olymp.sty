@@ -1,0 +1,58 @@
+\gdef\thisproblemauthor{Ivan Kazmenko}
+\gdef\thisproblemdeveloper{Ivan Kazmenko}
+\begin{problem}{Arithmetic on a Board}
+{arithmetic.in}{arithmetic.out}
+{2 seconds (\textsl{3 seconds for Java})}{256 mebibytes}{}
+
+Evgenia wrote $n$ positive integers on a board.
+Aleksey can erase any two integers $x$ and $y$, replacing them
+by either $x + y$ or $x \cdot y$ or $|x - y|$.
+Aleksey makes replacements until there is only one integer left.
+What is the minimal integer Aleksey can get after all replacements?
+
+\InputFile
+
+The first line of input contains an integer $n$
+($1 \le n \le 100\,000$).
+The second line contains a space-separated list of $n$ integers
+$a_1$, $a_2$, $\ldots$, $a_n$ which Evgenia initially wrote on the board
+($1 \le a_i \le 30$).
+
+\OutputFile
+
+On the first line, print the minimal integer Aleksey can get.
+
+\Examples
+
+\begin{example}
+\exmp{
+2
+1 2
+}{%
+1
+}%
+\exmp{
+3
+1 2 3
+}{%
+0
+}%
+\exmp{
+4
+16 2 3 4
+}{%
+2
+}%
+\end{example}
+
+\Explanations
+
+In the first example, you can replace $1$ and $2$ by $|2 - 1| = 1$.
+
+In the second example, you can first replace $1$ and $2$ by $1 + 2 = 3$,
+and after that, get $|3 - 3| = 0$.
+
+In the third example, one way to get a two is the following:
+$2 + 4 = 6$, $3 \cdot 6 = 18$ and $|16 - 18| = 2$.
+
+\end{problem}

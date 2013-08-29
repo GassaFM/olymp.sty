@@ -1,0 +1,13 @@
+Author: Ivan Kazmenko
+Idea: Ivan Kazmenko
+Inspiration: простая задача для всех
+Origin: 20121014, XXXIII SPbSU Championship
+Original Name: arithmetic
+Descriptions: TEX
+I/O: PROBLEMNAME.{in|out}
+ID: 0123
+
+Стиль легенды: математическая
+Легенда: нет
+Условие: пояснения к примерам
+Генератор: C++, gentools 0.7.245
