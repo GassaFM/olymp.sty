@@ -211,8 +211,8 @@
 \def\kw@of{of}
 \def\kw@notstated{not stated}
 \def\kw@IntentionallyBlankPage{This page is intentionally left blank}
-\def\kw@defaultinputname{test}
-\def\kw@defaultoutputname{answer}
+\def\kw@defaultinputname{тест}
+\def\kw@defaultoutputname{ответ}
 \fi
 
 \afterproblemhead=3mm
@@ -327,6 +327,7 @@
 \newif\ifdisplaydeveloper
 \newif\ifrevisionsignature
 \newif\ifdisplayauthorinfooter
+\newif\ifdisplaydeveloperinfooter
 
 \newcounter{problem}
 \newcounter{subtasknum}[problem]
@@ -341,6 +342,7 @@
 
 \newenvironment{problem}[6]{
 \global\let\lastproblemauthor\thisproblemauthor
+\global\let\lastproblemdeveloper\thisproblemdeveloper
 
 % Hotfix
 %\def\@memorylimit{#5}
@@ -378,10 +380,10 @@
     {
         \noindent
         \refstepcounter{problem}
-        \textbf{\problemheadfont\textsf{\kw@Problem\ \if@arabic\arabic{problem}.\else\Alph{problem}.\fi\ #1}}
-        \nopagebreak
-        \par\vspace{\afterproblemhead}
-        \problemtextfont\parindent=6.5mm
+        \textbf{\problemheadfont\textsf{\kw@Problem\ \if@arabic\arabic{problem}.\else\Alph{problem}.\fi\ #1}}%
+        \nopagebreak%
+        \par\vspace{\afterproblemhead}%
+        \problemtextfont\parindent=6.5mm%
         \vbox{
             \begin{tabular}{l@{\extracolsep{1cm}}l}
             \ifdisplayauthor%
@@ -419,6 +421,7 @@
     \newcommand{\OutputFileName}{\ifx&#3&{\kw@defaultoutputname}\else{#3}\fi}
 }{
     \global\let\lastproblemauthor\thisproblemauthor
+    \global\let\lastproblemdeveloper\thisproblemdeveloper
     \gdef\thisproblemauthor{\defaultproblemauthor}
     \gdef\thisproblemdeveloper{\defaultproblemdeveloper}
     \problemend
@@ -561,6 +564,14 @@
         {~\quad{\kw@Problem\ \problemletter}%
         {\hfill}%
         {\kw@ProblemAuthor~\lastproblemauthor}%
+        {\hfill}%
+        {\kw@Page\ \thepage\ \kw@of\ \pageref{LastPage}\rsigfooter}\quad~}}%
+\else%
+\ifdisplaydeveloperinfooter%
+	{\gdef\thefooter%
+        {~\quad{\kw@Problem\ \problemletter}%
+        {\hfill}%
+        {\kw@ProblemDeveloper~\lastproblemdeveloper}%
         {\hfill}%
         {\kw@Page\ \thepage\ \kw@of\ \pageref{LastPage}\rsigfooter}\quad~}}%
 \else%
