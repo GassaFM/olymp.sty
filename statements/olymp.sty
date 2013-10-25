@@ -10,6 +10,8 @@
 
 \ProvidesPackage{olymp}
 
+\usepackage{verbatim}
+
 
 \newif\if@landscape\@landscapefalse
 \newif\if@russian\@russianfalse
@@ -211,8 +213,8 @@
 \def\kw@of{of}
 \def\kw@notstated{not stated}
 \def\kw@IntentionallyBlankPage{This page is intentionally left blank}
-\def\kw@defaultinputname{тест}
-\def\kw@defaultoutputname{ответ}
+\def\kw@defaultinputname{test}
+\def\kw@defaultoutputname{answer}
 \fi
 
 \afterproblemhead=3mm
@@ -438,6 +440,9 @@
     }
 }
 
+% This is magic, which delete space after verbatiminput
+\addto@hook{\every@verbatim}{\topsep=0pt\relax}
+
 % :FIXME:
 \newenvironment{example}[1][]{
     \s@tm@cr@s#1
@@ -447,6 +452,15 @@
         \begin{minipage}[t]{\exmpwidouf}\rightskip=0pt plus 1fill\relax##2\medskip\end{minipage}\\
         \hline
     }
+
+    \newcommand{\exmpfile}[2]{
+       \exmp{
+          \verbatiminput{##1}
+       }{
+          \verbatiminput{##2}
+       }%
+    }
+
 
     \begin{tabular}{|l|l|}
         \hline
@@ -477,6 +491,13 @@
         \hline
         \end{tabular}
     }
+    \newcommand{\exmpfile}[2]{
+       \exmp{
+          \verbatiminput{##1}
+       }{
+          \verbatiminput{##2}
+       }%
+    }
 }{
 }
 
@@ -489,6 +510,17 @@
         \begin{minipage}[t]{\exmpthreewidnote}\rightskip=0pt plus 1fill\relax##3\medskip\end{minipage}\\
         \hline
     }
+
+    \newcommand{\exmpfile}[3]{
+       \exmp{
+          \verbatiminput{##1}
+       }{
+          \verbatiminput{##2}
+       }{
+          ##3
+       }%
+    }
+
 
     \begin{tabular}{|l|l|l|}
         \hline
