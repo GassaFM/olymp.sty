@@ -343,7 +343,7 @@
 \nopagebreak\par\afterproblemsectioncaption}%
 }%
 
-\newenvironment{problem}[6]{
+\newenvironment{@problem}[6]{
 \global\let\lastproblemauthor\thisproblemauthor
 \global\let\lastproblemdeveloper\thisproblemdeveloper
 
@@ -530,6 +530,17 @@
         \hline
 }{
     \end{tabular}
+}
+
+% -- This is hack to make feedback argument optional
+
+\newenvironment{problem}[5]{
+\def\@ProblemCommon{\begin{@problem}{#1}{#2}{#3}{#4}{#5}}
+\newcommand\@problemSix[1]{\@ProblemCommon{##1}}
+\newcommand\@problemFive{\@ProblemCommon{}}
+\@ifnextchar\bgroup\@problemSix\@problemFive
+}{
+\end{@problem}
 }
 
 
