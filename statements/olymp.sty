@@ -422,12 +422,12 @@
 
     \newcommand{\InputFileName}{\ifx&#2&{\kw@defaultinputname}\else{#2}\fi}
     \newcommand{\OutputFileName}{\ifx&#3&{\kw@defaultoutputname}\else{#3}\fi}
-}{
-    \global\let\lastproblemauthor\thisproblemauthor
-    \global\let\lastproblemdeveloper\thisproblemdeveloper
-    \gdef\thisproblemauthor{\defaultproblemauthor}
-    \gdef\thisproblemdeveloper{\defaultproblemdeveloper}
-    \problemend
+}{%
+    \global\let\lastproblemauthor\thisproblemauthor%
+    \global\let\lastproblemdeveloper\thisproblemdeveloper%
+    \gdef\thisproblemauthor{\defaultproblemauthor}%
+    \gdef\thisproblemdeveloper{\defaultproblemdeveloper}%
+    \problemend%
 }
 
 \def\s@tm@cr@s{
@@ -534,13 +534,13 @@
 
 % -- This is hack to make feedback argument optional
 
-\newenvironment{problem}[5]{
-\def\@ProblemCommon{\begin{@problem}{#1}{#2}{#3}{#4}{#5}}
-\newcommand\@problemSix[1]{\@ProblemCommon{##1}}
-\newcommand\@problemFive{\@ProblemCommon{}}
-\@ifnextchar\bgroup\@problemSix\@problemFive
-}{
-\end{@problem}
+\newenvironment{problem}[5]{%
+\def\@ProblemCommon{\begin{@problem}{#1}{#2}{#3}{#4}{#5}}%
+\newcommand\@problemSix[1]{\@ProblemCommon{##1}}%
+\newcommand\@problemFive{\@ProblemCommon{}}%
+\@ifnextchar\bgroup\@problemSix\@problemFive%
+}{%
+\end{@problem}%
 }
 
 
