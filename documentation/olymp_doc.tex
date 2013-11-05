@@ -13,6 +13,8 @@
 \usepackage{wrapfig}
 \usepackage{verbatim}
 \usepackage{hyperref}
+\usepackage{listings}
+
 
 
 
@@ -21,6 +23,8 @@
 \begin{document}
 
 \newcommand{\giturl}[1]{\href{https://github.com/GassaFM/olymp.sty}{#1}}
+\newcommand{\subgiturl}[2]{\href{https://github.com/GassaFM/olymp.sty/#1}{#2}}
+\newcommand{\command}[1]{\textbackslash\unskip #1}
 
 \title{Руководство пользователя пакета olymp.sty}
 \author{}
@@ -34,6 +38,68 @@
 
 На текущий момент(\today) исходный код библиотеки, а так же
 этой документации хранится в \giturl{репозитории} на GitHub.
+
+\section{Создание условия одной задачи}
+
+Для условия одной задачи используется окружение \t{problem}.
+
+У этого окружения есть следующие параметры
+\begin{enumerate}
+\item Название задачи
+\item Имя входного файла
+\item Имя выходного файла
+\item Ограничение по времени
+\item Ограничение по памяти
+\item Отображение результатов (может быть опущен)
+\end{enumerate}
+
+Например началом задачи может быть команда. 
+\begin{lstlisting}[language=tex]
+\begin{problem}{Name}{file.in}{file.out}{2 seconds}{256 mebibytes}
+\end{lstlisting}
+Такая команда создаст шапку задачи с названием и ограничениями.
+
+Внутри окружения \t{problem} определены секции задачи, приведенные в таблице ниже.
+Секции являются загаловками часто встречающихся частей задачи.
+
+\begin{tabular}{|c|c|c|}
+\hline
+Назавние секции & Текст в русском условии & Текст в английском условии \\ \hline
+\command{Constraints} & Ограничения & Constraints \\ \hline
+\command{Example} & Пример & Example \\ \hline
+\command{Examples} & Примеры & Examples \\ \hline
+\command{Explanation} & Пояснение к примеру & Explanation \\ \hline
+\command{Explanations} & Пояснения к примерам & Explanations \\ \hline
+\command{Illustration} & Иллюстрация & Illustration \\ \hline
+\command{InputFile} & Формат входных данных & Input \\ \hline
+\command{Note} & Замечание & Note \\ \hline
+\command{Notes} & Замечания & Notes \\ \hline
+\command{OutputFile} & Формат выходных данных & Output \\ \hline
+\command{Scoring} & Система оценки & Scoring \\ \hline
+\command{Specification} & Спецификация & Specification \\ \hline
+\command{Subtask} & Подзадача \#1 & Subtask \#1\\ \hline
+\command{SubtaskWithCost} & Подзадача \#1 (\#2 баллов) & Subtask \#1 (\#2 points)\\ \hline
+\end{tabular}
+
+У последних двух секции есть аргументы. Их значения представлены как \#1 и \#2 соответсвенно.
+
+Кроме того, в окружении \t{problem} определены окружения примеров \t{example}, \t{examplewide} и \t{examplethree}.
+
+Внутри каждого из этих окружений определены команды \command{exmp} и \command{exmpfile}. В окруженях \t{example} и \t{examplewide}
+они принемают два параметра --- пример ввода и пример ответа.
+Эти два окружения отличаются относительным расположением примера и ответа. Окруждение \t{examplewide}
+следует использовать, если пример занимает много места в ширину.
+
+Окружение \t{examplethree} отличается наличием третьего поля. Его заголовок можно определить
+командой.
+\begin{lstlisting}[language=tex]
+\renewcommand{\kwExampleNotes}{Your text here}
+\end{lstlisting}
+По умолчанию заголовок <<Пояснение>> в русских условиях и <<Note>> в английских.
+
+Пример условия задачи можно посмотреть в \subgiturl{blob/master/problems/arithmetic/statement/arithmetic.en.tex}{репозитории}.
+
+
 
 
 
