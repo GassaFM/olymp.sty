@@ -22,9 +22,10 @@
 
 \begin{document}
 
+\renewcommand{\t}{\texttt}
 \newcommand{\giturl}[1]{\href{https://github.com/GassaFM/olymp.sty}{#1}}
 \newcommand{\subgiturl}[2]{\href{https://github.com/GassaFM/olymp.sty/#1}{#2}}
-\newcommand{\command}[1]{\textbackslash#1}
+\newcommand{\command}[1]{\t{\textbackslash#1}}
 
 \title{Руководство пользователя пакета olymp.sty}
 \author{}
@@ -34,7 +35,6 @@
 \tableofcontents
 \newpage
 
-
 \section{Введение}
 
 Пакет \t{olymp.sty} предназначен для подготовки условий задач
@@ -43,6 +43,7 @@
 На текущий момент(\today) исходный код библиотеки, а также
 этой документации, хранится в \giturl{репозитории} на GitHub.
 
+\newpage
 \section{Создание условия одной задачи}
 
 Для условия одной задачи используется окружение \t{problem}.
@@ -105,6 +106,7 @@
 
 Пример условия задачи можно посмотреть в \subgiturl{blob/master/problems/arithmetic/statement/arithmetic.en.tex}{репозитории}.
 
+\newpage
 \section{Настройки отображения}
 
 Настройки различных деталий сборки условий устанавливаются в tex-файле контеста.
