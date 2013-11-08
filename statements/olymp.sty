@@ -136,6 +136,7 @@
 \def\kw@Problem{Задача}
 \def\kw@ProblemAuthor{Автор:}
 \def\kw@ProblemDeveloper{Разработчик:}
+\def\kw@ProblemOrigin{Источник:}
 \def\kw@InputFileName{Имя входного файла:}
 \def\kw@OutputFileName{Имя выходного файла:}
 \def\kw@TimeLimit{Ограничение по времени:}
@@ -176,6 +177,7 @@
 \def\kw@Problem{Problem}
 \def\kw@ProblemAuthor{Author:}
 \def\kw@ProblemDeveloper{Developer:}
+\def\kw@ProblemOrigin{Origin:}
 \def\kw@InputFileName{Input file:}
 \def\kw@OutputFileName{Output file:}
 \def\kw@TimeLimit{Time limit:}
@@ -322,9 +324,12 @@
 \gdef\thisproblemauthor{\defaultproblemauthor}
 \def\defaultproblemdeveloper{\textit{\kw@notstated}}
 \gdef\thisproblemdeveloper{\defaultproblemdeveloper}
+\def\defaultproblemorigin{\textit{\kw@notstated}}
+\gdef\thisproblemorigin{\defaultproblemorigin}
 
 \newif\ifdisplayauthor
 \newif\ifdisplaydeveloper
+\newif\ifdisplayorigin
 \newif\ifrevisionsignature
 \newif\ifdisplayauthorinfooter
 \newif\ifdisplaydeveloperinfooter
@@ -343,6 +348,7 @@
 \newenvironment{@problem}[6]{
 \global\let\lastproblemauthor\thisproblemauthor
 \global\let\lastproblemdeveloper\thisproblemdeveloper
+\global\let\lastproblemorigin\thisproblemorigin
 
 % Hotfix
 %\def\@memorylimit{#5}
@@ -392,6 +398,9 @@
             \ifdisplaydeveloper%
             \kw@ProblemDeveloper & \thisproblemdeveloper \\
             \fi%
+            \ifdisplayorigin%
+            \kw@ProblemOrigin & \thisproblemorigin \\
+            \fi%
             \ifx&#2&%
             \else%
             \kw@InputFileName & \texttt{#2} \\
@@ -422,8 +431,10 @@
 }{%
     \global\let\lastproblemauthor\thisproblemauthor%
     \global\let\lastproblemdeveloper\thisproblemdeveloper%
+    \global\let\lastproblemdorigin\thisproblemorigin%
     \gdef\thisproblemauthor{\defaultproblemauthor}%
     \gdef\thisproblemdeveloper{\defaultproblemdeveloper}%
+    \gdef\thisproblemorigin{\defaultproblemorigin}%
     \problemend%
 }
 
