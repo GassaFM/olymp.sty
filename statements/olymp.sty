@@ -133,6 +133,9 @@
 % -- Setup keywords --
 
 \if@russian
+\def\kw@ProblemTutorial{Разбор задачи}
+\def\kw@LeftQuote{<<}
+\def\kw@RightQuote{>>}
 \def\kw@Problem{Задача}
 \def\kw@ProblemAuthor{Автор:}
 \def\kw@ProblemDeveloper{Разработчик:}
@@ -174,6 +177,9 @@
 \def\kw@defaultinputname{тест}
 \def\kw@defaultoutputname{ответ}
 \else
+\def\kw@ProblemTutorial{Problem Tutorial}
+\def\kw@LeftQuote{``}
+\def\kw@RightQuote{''}
 \def\kw@Problem{Problem}
 \def\kw@ProblemAuthor{Author:}
 \def\kw@ProblemDeveloper{Developer:}
@@ -344,6 +350,10 @@
 \textsf{~(\kw@points:~#1)}%
 \nopagebreak\par\afterproblemsectioncaption}%
 }%
+
+\newenvironment{tutorial}[1]{
+    \textbf{\problemheadfont\textsf{\kw@ProblemTutorial\ \kw@LeftQuote#1\kw@RightQuote}}
+}
 
 \newenvironment{@problem}[6]{
 \global\let\lastproblemauthor\thisproblemauthor
