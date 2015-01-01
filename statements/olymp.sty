@@ -134,8 +134,6 @@
 
 \if@russian
 \def\kw@ProblemTutorial{Разбор задачи}
-\def\kw@LeftQuote{<<}
-\def\kw@RightQuote{>>}
 \def\kw@Problem{Задача}
 \def\kw@ProblemAuthor{Автор:}
 \def\kw@ProblemDeveloper{Разработчик:}
@@ -178,8 +176,6 @@
 \def\kw@defaultoutputname{ответ}
 \else
 \def\kw@ProblemTutorial{Problem Tutorial}
-\def\kw@LeftQuote{``}
-\def\kw@RightQuote{''}
 \def\kw@Problem{Problem}
 \def\kw@ProblemAuthor{Author:}
 \def\kw@ProblemDeveloper{Developer:}
@@ -351,8 +347,16 @@
 \nopagebreak\par\afterproblemsectioncaption}%
 }%
 
-\newenvironment{tutorial}[1]{
-    \textbf{\problemheadfont\textsf{\kw@ProblemTutorial\ \kw@LeftQuote#1\kw@RightQuote}}
+\newenvironment{tutorial}[1]{%
+    \noindent%
+    \if@russian%
+    \textbf{\problemheadfont\textsf{\kw@ProblemTutorial\ <<#1>>}}%
+    \else%
+    \textbf{\problemheadfont\textsf{\kw@ProblemTutorial:\ ``#1''}}%
+    \fi%
+    \nopagebreak%
+    \par\vspace{\afterproblemhead}%
+    \problemtextfont%
 }
 
 \newenvironment{@problem}[6]{
