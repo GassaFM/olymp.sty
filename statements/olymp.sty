@@ -389,7 +389,13 @@
     {
         \noindent
         \refstepcounter{problem}
-        \textbf{\problemheadfont\textsf{\kw@Problem\ \if@arabic\arabic{problem}.\else\Alph{problem}.\fi\ #1}}%
+        \textbf{\problemheadfont\textsf{\kw@Problem\ \if@arabic\arabic{problem}\else\Alph{problem}\fi.\ #1%
+                \ifdefined\DivisionNumber%
+                \if\DivisionNumber2%
+                {\ \textit{(Division\ \DivisionNumber)}}%
+                \fi%
+                \fi%
+                }}%
         \nopagebreak%
         \par\vspace{\afterproblemhead}%
         \problemtextfont\parindent=6.5mm%
@@ -616,7 +622,8 @@
 \ifdisplayauthorinfooter%
 %\if@newfooter%
 	{\gdef\thefooter%
-        {~\quad{\kw@Problem\ \problemletter}%
+        {~\quad{\kw@Problem\ \problemletter%
+        \ifdefined\DivisionNumber{ (Div.~\DivisionNumber)}\fi}%
         {\hfill}%
         {\kw@ProblemAuthor~\lastproblemauthor}%
         {\hfill}%
