@@ -348,6 +348,7 @@
 }%
 
 \newenvironment{tutorial}[1]{%
+    \bigskip%
     \noindent%
     \if@russian%
     \textbf{\problemheadfont\textsf{\kw@ProblemTutorial\ <<#1>>}}%
@@ -355,7 +356,6 @@
     \textbf{\problemheadfont\textsf{\kw@ProblemTutorial:\ ``#1''}}%
     \fi%
     \nopagebreak%
-    \par\vspace{\afterproblemhead}%
     \problemtextfont%
 }
 
