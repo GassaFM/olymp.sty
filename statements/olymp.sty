@@ -403,7 +403,9 @@
     {
         \noindent
         \refstepcounter{problem}
-        \textbf{\problemheadfont\textsf{\kw@Problem\ \if@arabic\arabic{problem}\else\Alph{problem}\fi.\ #1%
+        \textbf{\problemheadfont\textsf{%
+                \ifdefined\ShortProblemTitle\else{\kw@Problem\ \if@arabic\arabic{problem}\else\Alph{problem}\fi.\ }\fi%
+                #1%
                 \ifdefined\DivisionNumber%
                 \if\DivisionNumber2%
                 {\ \textit{(Division\ \DivisionNumber)}}%
