@@ -1,0 +1,56 @@
+\documentclass[12pt,a4paper,oneside]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{olymp}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color} % for colored text
+\usepackage{import} % for changing current dir
+\usepackage{epigraph}
+\usepackage{daytime} % for displaying version number and date
+\usepackage{wrapfig} % for having text alongside pictures
+\usepackage{verbatim}
+
+\newcommand{\importproblem}[1]{\import{../problems/#1/statement/}{./#1.en.tex}}
+
+\contest
+{ACM International Collegiate Programming Contest}%
+{Example Statements}%
+{Weekday, Month Day, Year}%
+
+% Vertical strecth for page: http://tex.stackexchange.com/a/21207
+\iftrue
+  \makeatletter
+  \usepackage[active,tightpage,psfixbb]{preview}
+  \renewcommand{\PreviewBorder}{1cm}
+
+  \newenvironment{stretchpage}%
+    {\begin{preview}\begin{minipage}{\hsize}}%
+    {\end{minipage}\end{preview}}
+  \AtBeginDocument{\begin{stretchpage}}
+  \AtEndDocument{\end{stretchpage}}
+
+  \newcommand{\@@newpage}{\end{stretchpage}\begin{stretchpage}}
+
+  \let\@real@section\section
+  \renewcommand{\section}{\@@newpage\@real@section}
+  \makeatother
+\fi
+
+% Problem title without problem letter:
+\def\ShortProblemTitle{}
+
+\binoppenalty=10000
+\relpenalty=10000
+\exhyphenpenalty=10000
+
+\begin{document}
+
+\raggedbottom
+
+\importproblem{arithmetic}
+
+\end{document}
