@@ -401,6 +401,7 @@
 % -- End of no feedback case --
 
     {
+        \ifdefined\NoProblemHead\else%
         \noindent
         \refstepcounter{problem}
         \textbf{\problemheadfont\textsf{%
@@ -448,6 +449,7 @@
         }
         \nopagebreak
         \par\vspace{\afterconstraints}
+        \fi%
     }
     \problemtextfont
 
@@ -481,33 +483,42 @@
     \s@tm@cr@s#1
     \ttfamily\obeylines\obeyspaces\frenchspacing
     \newcommand{\exmp}[2]{
+        \ifdefined\NoExamples\else%
         \begin{minipage}[t]{\exmpwidinf}\rightskip=0pt plus 1fill\relax##1\medskip\end{minipage}&
         \begin{minipage}[t]{\exmpwidouf}\rightskip=0pt plus 1fill\relax##2\medskip\end{minipage}\\
         \hline
+        \fi%
     }
 
     \newcommand{\exmpfile}[2]{
+       \ifdefined\NoExamples\else%
        \exmp{
           \verbatiminput{##1}
        }{
           \verbatiminput{##2}
        }%
+       \fi%
     }
 
 
+    \ifdefined\NoExamples\else%
     \begin{tabular}{|l|l|}
         \hline
         \multicolumn{1}{|c|}{\bf\texttt{\InputFileName}}&
         \multicolumn{1}{|c|}{\bf\texttt{\OutputFileName}}\\
         \hline
+    \fi%
 }{
+    \ifdefined\NoExamples\else%
     \end{tabular}
+    \fi%
 }
 
 \newenvironment{examplewide}[1][]{%
     \s@tm@cr@s#1
     \ttfamily\obeylines\obeyspaces\frenchspacing
     \newcommand{\exmp}[2]{
+        \ifdefined\NoExamples\else%
         \begin{tabular}{|c|}
         \hline
         \multicolumn{1}{|c|}{\bf\texttt{\InputFileName}}\\
@@ -523,13 +534,16 @@
         \medskip\end{minipage}\\%
         \hline
         \end{tabular}
+        \fi%
     }
     \newcommand{\exmpfile}[2]{
+       \ifdefined\NoExamples\else%
        \exmp{
           \verbatiminput{##1}
        }{
           \verbatiminput{##2}
        }%
+       \fi%
     }
 }{
 }
@@ -538,13 +552,16 @@
     \s@tm@cr@s#1
     \ttfamily\obeylines\obeyspaces\frenchspacing
     \newcommand{\exmp}[3]{
+        \ifdefined\NoExamples\else%
         \begin{minipage}[t]{\exmpthreewidinf}\rightskip=0pt plus 1fill\relax##1\medskip\end{minipage}&
         \begin{minipage}[t]{\exmpthreewidouf}\rightskip=0pt plus 1fill\relax##2\medskip\end{minipage}&
         \begin{minipage}[t]{\exmpthreewidnote}\rightskip=0pt plus 1fill\relax##3\medskip\end{minipage}\\
         \hline
+        \fi%
     }
 
     \newcommand{\exmpfile}[3]{
+       \ifdefined\NoExamples\else%
        \exmp{
           \verbatiminput{##1}
        }{
@@ -552,17 +569,22 @@
        }{
           ##3
        }%
+       \fi%
     }
 
 
+    \ifdefined\NoExamples\else%
     \begin{tabular}{|l|l|l|}
         \hline
         \multicolumn{1}{|c|}{\bf\texttt{\InputFileName}}&
         \multicolumn{1}{|c|}{\bf\texttt{\OutputFileName}}&
         \multicolumn{1}{|c|}{\bf\texttt{\expandafter\unexpanded{\expandafter\kwExampleNotes}}}\\
         \hline
+    \fi%
 }{
+    \ifdefined\NoExamples\else%
     \end{tabular}
+    \fi%
 }
 
 % -- This is hack to make feedback argument optional
