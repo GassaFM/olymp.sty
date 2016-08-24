@@ -267,6 +267,17 @@
 \nopagebreak\par\afterproblemsectioncaption}
 }
 
+\newcommand{\createsectionexample}{\@newsectionexample}
+
+\def\@newsectionexample#1#2{\DeclareRobustCommand{#1}{
+\ifdefined\NoExamples\else%
+{\beforeproblemsectioncaption\noindent\bf\problemsectionfont
+\textsf{#2}}
+\nopagebreak\par\afterproblemsectioncaption%
+\fi%
+}
+}
+
 \newcommand{\createsectionpar}{\@newsectionpar}
 
 \def\@newsectionpar#1#2{\DeclareRobustCommand{#1}[1]{
@@ -287,8 +298,8 @@
 \createsection{\Interaction}{\kw@Interaction}
 \createsection{\InputFile}{\kw@Input}
 \createsection{\OutputFile}{\kw@Output}
-\createsection{\Example}{\kw@Example}
-\createsection{\Examples}{\kw@Examples}
+\createsectionexample{\Example}{\kw@Example}
+\createsectionexample{\Examples}{\kw@Examples}
 \createsection{\Explanation}{\kw@Explanation}
 \createsection{\Explanations}{\kw@Explanations}
 \createsection{\Illustration}{\kw@Illustration}
