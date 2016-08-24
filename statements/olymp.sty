@@ -438,22 +438,26 @@
             \ifdisplayorigin%
             \kw@ProblemOrigin & \thisproblemorigin \\
             \fi%
+            \ifdefined\NoInputFileName\else%
             \ifx&#2&%
             \else%
             \kw@InputFileName & \texttt{#2} \\
-            \fi%
+            \fi\fi%
+            \ifdefined\NoOutputFileName\else%
             \ifx&#3&%
             \else%
             \kw@OutputFileName & \texttt{#3} \\
-            \fi%
+            \fi\fi%
+            \ifdefined\NoTimeLimit\else%
             \ifx&#4&%
             \else%
             \kw@TimeLimit & #4 \\
-            \fi%
+            \fi\fi%
+            \ifdefined\NoMemoryLimit\else%
             \ifx&#5&%
             \else%
             \kw@MemoryLimit & #5 \\
-            \fi%
+            \fi\fi%
 %            \kw@MemoryLimit & \@memorylimit \\
             \@feedback
             \end{tabular}
