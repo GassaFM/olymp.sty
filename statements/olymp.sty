@@ -468,8 +468,8 @@
     }
     \problemtextfont
 
-    \newcommand{\InputFileName}{\ifx&#2&{\kw@defaultinputname}\else{#2}\fi}
-    \newcommand{\OutputFileName}{\ifx&#3&{\kw@defaultoutputname}\else{#3}\fi}
+    \newcommand{\InputFileName}{\ifx\relax#2\relax{\kw@defaultinputname}\else{#2}\fi}
+    \newcommand{\OutputFileName}{\ifx\relax#3\relax{\kw@defaultoutputname}\else{#3}\fi}
 }{%
     \global\let\lastproblemauthor\thisproblemauthor%
     \global\let\lastproblemdeveloper\thisproblemdeveloper%
