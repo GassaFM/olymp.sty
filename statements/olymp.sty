@@ -12,6 +12,7 @@
 
 \newif\if@landscape\@landscapefalse
 \newif\if@russian\@russianfalse
+\newif\if@ukrainian\@ukrainianfalse
 \newif\if@arabic\@arabicfalse
 
 \DeclareOption{landscape}{
@@ -19,6 +20,9 @@
 }
 \DeclareOption{russian}{
     \@russiantrue
+}
+\DeclareOption{ukrainian}{
+    \@ukrainiantrue
 }
 \DeclareOption{arabic}{
     \@arabictrue
@@ -124,8 +128,15 @@
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 \else
+\if@ukrainian
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\else
 \parindent=0mm
 \parskip=1ex
+\fi
 \fi
 
 % -- End of setup sizes --
@@ -176,6 +187,50 @@
 \def\kw@defaultinputname{тест}
 \def\kw@defaultoutputname{ответ}
 \else
+\if@ukrainian
+\def\kw@ProblemTutorial{Розбір задачі}
+\def\kw@Problem{Задача}
+\def\kw@ProblemAuthor{Автор:}
+\def\kw@ProblemDeveloper{Розробник:}
+\def\kw@ProblemOrigin{Джерело:}
+\def\kw@InputFileName{Назва вхідного файлу:}
+\def\kw@OutputFileName{Назва вихідного файлу:}
+\def\kw@TimeLimit{Ліміт часу:}
+\def\kw@MemoryLimit{Ліміт використання пам'яті:}
+\def\kw@Feedback{Відображення результатів:}
+\def\kw@stdin{стандартний потік вводу}
+\def\kw@stdout{стандартний потік виводу}
+\def\kw@Specification{Специфікація}
+\def\kw@Interaction{Протокол взаємодії}
+\def\kw@Input{Формат вхідних даних}
+\def\kw@Output{Формат вихідних даних}
+\def\kw@Example{Приклад}
+\def\kw@Examples{Приклади}
+\def\kwExampleNotes{Пояснення}
+\def\kw@Explanation{Пояснення до прикладу}
+\def\kw@Explanations{Пояснения до прикладів}
+\def\kw@Illustration{Ілюстрація}
+\def\kw@Scoring{Система оцінки}
+\def\kw@Note{Зауваження}
+\def\kw@Notes{Зауваження}
+\def\kw@Constraints{Обмеження}
+\def\kw@version{версія}
+\def\kw@revision{ревізія}
+\def\kw@SubtaskOne{Підзадача 1}
+\def\kw@SubtaskTwo{Підзадача 2}
+\def\kw@SubtaskThree{Підзадача 3}
+\def\kw@SubtaskFour{Підзадача 4}
+\def\kw@SubtaskFive{Підзадача 5}
+\def\kw@SubtaskSix{Підзадача 6}
+\def\kw@Subtask{Підзадача}
+\def\kw@points{бали}
+\def\kw@Page{Сторінка}
+\def\kw@of{з}
+\def\kw@notstated{не вказано}
+\def\kw@IntentionallyBlankPage{Ця сторінка спеціально залишена порожньою}
+\def\kw@defaultinputname{тест}
+\def\kw@defaultoutputname{відповідь}
+\else
 \def\kw@ProblemTutorial{Problem Tutorial}
 \def\kw@Problem{Problem}
 \def\kw@ProblemAuthor{Author:}
@@ -218,6 +273,7 @@
 \def\kw@IntentionallyBlankPage{This page is intentionally left blank}
 \def\kw@defaultinputname{test}
 \def\kw@defaultoutputname{answer}
+\fi
 \fi
 
 \afterproblemhead=3mm
@@ -323,13 +379,21 @@
 \if@russian
 \def\defaulttimelimit{2 секунды}
 \else
+\if@ukrainian
+\def\defaulttimelimit{2 секунди}
+\else
 \def\defaulttimelimit{2 seconds}
+\fi
 \fi
 
 \if@russian
 \def\defaultmemorylimit{256 мебибайт}
 \else
+\if@ukrainian
+\def\defaulttimelimit{256 мебібайт}
+\else
 \def\defaultmemorylimit{256 mebibytes}
+\fi
 \fi
 
 % -- End of default limits definition --
@@ -367,7 +431,11 @@
     \if@russian%
     \textbf{\problemheadfont\textsf{\kw@ProblemTutorial\ <<#1>>}}%
     \else%
+    \if@ukrainian%
+    \textbf{\problemheadfont\textsf{\kw@ProblemTutorial\ <<#1>>}}%
+    \else%
     \textbf{\problemheadfont\textsf{\kw@ProblemTutorial:\ ``#1''}}%
+    \fi%
     \fi%
     \nopagebreak%
     \problemtextfont%
