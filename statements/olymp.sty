@@ -91,10 +91,11 @@
 % -- End of setup margins --
 
 %---------- From package "lastpage" ------------------
-\def\lastpage@putlabel{\addtocounter{page}{-1}%
+\@ifundefined{lastpage@putl@bel}{
+\def\lastpage@putl@bel{\addtocounter{page}{-1}%
    \immediate\write\@auxout{\string\newlabel{LastPage}{{}{\thepage}}}%
-   \addtocounter{page}{1}}
-\AtEndDocument{\clearpage\lastpage@putlabel}%
+   \addtocounter{page}{1}}}
+\AtEndDocument{\clearpage\lastpage@putl@bel}%
 %---------- end of "lastpage" ------------------
 
 % -- Setup sizes --
