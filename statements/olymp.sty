@@ -90,12 +90,14 @@
 
 % -- End of setup margins --
 
+\@ifundefined{lastpage@putlabel}{
 %---------- From package "lastpage" ------------------
 \def\lastpage@putlabel{\addtocounter{page}{-1}%
    \immediate\write\@auxout{\string\newlabel{LastPage}{{}{\thepage}}}%
    \addtocounter{page}{1}}
 \AtEndDocument{\clearpage\lastpage@putlabel}%
 %---------- end of "lastpage" ------------------
+}%
 
 % -- Setup sizes --
 \newlength{\exmpwidinf}
