@@ -650,7 +650,7 @@
 
 \makeatletter
 
-\renewcommand{\@oddhead}{
+\renewcommand{\@oddhead}{%
     \parbox{\textwidth}{
         \sffamily
         \begin{center}
@@ -661,8 +661,8 @@
     }
 }
 
-\renewcommand{\@oddfoot}{
-\gdef\problemletter{\if@arabic\arabic{problem}\else\Alph{problem}\fi}
+\renewcommand{\@oddfoot}{%
+\gdef\problemletter{\if@arabic\arabic{problem}\else\Alph{problem}\fi}%
 
 % Revision signature
 \ifrevisionsignature%
