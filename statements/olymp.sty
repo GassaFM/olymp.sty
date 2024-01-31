@@ -349,6 +349,7 @@
 \newif\ifrevisionsignature
 \newif\ifdisplayauthorinfooter
 \newif\ifdisplaydeveloperinfooter
+\newif\ifdisplayprobleminfooter
 
 \newcounter{problem}
 \newcounter{subtasknum}[problem]
@@ -690,8 +691,15 @@
         {\hfill}%
         {\kw@Page\ \thepage\ \kw@of\ \pageref{LastPage}\rsigfooter}\quad~}}%
 \else%
+\ifdisplayprobleminfooter%
+	{\gdef\thefooter%
+        {~\quad{\kw@Problem\ \problemletter}%
+        {\hfill}%
+        {\kw@Page\ \thepage\ \kw@of\ \pageref{LastPage}\rsigfooter}\quad~}}%
+\else%
 	{\gdef\thefooter%
         {{\hfil}\kw@Page\ \thepage\ \kw@of\ \pageref{LastPage}\rsigfooter\hfil}}%
+\fi%
 \fi%
 \fi%
 
